@@ -347,7 +347,7 @@ class DonationDataMapper {
 	 *
 	 * @since  1.0.0
 	 *
-	 * @return Charitable_Donation
+	 * @return \Charitable_Donation
 	 */
 	public function get_donation() {
 		return $this->donation;
