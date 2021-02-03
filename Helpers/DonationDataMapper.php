@@ -142,6 +142,10 @@ class DonationDataMapper {
 	 * @return int
 	 */
 	public function get_amount() {
+		if ( $this->donation->get( 'cover_fees' ) ) {
+			return $this->donation->get( 'total_donation_with_fees' );
+		}
+
 		return $this->donation->get_total_donation_amount( true );
 	}
 
@@ -153,7 +157,7 @@ class DonationDataMapper {
 	 * @return int
 	 */
 	public function get_amount_in_cents() {
-		return $this->get_amount() * 100;
+		return intval( $this->get_amount() * 100 );
 	}
 
 	/**
@@ -336,5 +340,16 @@ class DonationDataMapper {
 		}
 
 		return array_intersect_key( $data, array_flip( $keys ) );
+	}
+
+	/**
+	 * Return the donation object that this map was created with.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @return \Charitable_Donation
+	 */
+	public function get_donation() {
+		return $this->donation;
 	}
 }
