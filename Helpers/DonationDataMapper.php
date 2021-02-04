@@ -246,50 +246,22 @@ class DonationDataMapper {
 				if ( false === strpos( $gateway_key, '.' ) ) {
 					$this->data[ $gateway_key ] = $this->$key;
 				} else {
-					$parts = explode( '.', $gateway_key );
-					$first = current( $parts );
+					$parts  = array_reverse( explode( '.', $gateway_key ) );
+					$branch = $this->$key;
 
-					array_shift( $parts );
-
-					if ( ! array_key_exists( $first, $this->data ) ) {
-						$this->data[ $first ] = array();
+					foreach ( $parts as $part ) {
+						$branch = array( $part => $branch );
 					}
 
-					$this->data[ $first ] = array_merge_recursive(
-						$this->get_data_branch( array(), $parts, $key ),
-						$this->data[ $first ]
+					$this->data = array_merge_recursive(
+						$this->data,
+						$branch
 					);
 				}
 			}
 		}
 
 		return $this->data;
-	}
-
-	/**
-	 * Get the data to include in a particular branch.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @param  array  $data     The full data branch as it currently is.
-	 * @param  array  $branches The branches that will go into this branch.
-	 * @param  string $key      The key of the value to get.
-	 * @return array
-	 */
-	public function get_data_branch( $data, $branches, $key ) {
-		$current = current( $branches );
-
-		array_shift( $branches );
-
-		/* We've reached the end. */
-		if ( empty( $branches ) ) {
-			$data[ $current ] = $this->$key;
-			return $data;
-		}
-
-		$data[ $current ] = array();
-
-		return $this->get_data_branch( $data, $branches, $key );
 	}
 
 	/**
