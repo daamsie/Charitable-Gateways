@@ -143,7 +143,7 @@ class DonationDataMapper {
 	 */
 	public function get_amount() {
 		if ( $this->donation->get( 'cover_fees' ) ) {
-			return $this->donation->get( 'total_donation_with_fees' );
+			return \Charitable_Currency::get_instance()->cast_to_decimal_format( $this->donation->get( 'total_donation_with_fees' ) );
 		}
 
 		return $this->donation->get_total_donation_amount( true );
