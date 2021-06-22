@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class SavedPaymentMethods implements Iterator {
+class SavedPaymentMethods {
 
 	/**
 	 * Saved payment methods.
@@ -31,16 +31,7 @@ class SavedPaymentMethods implements Iterator {
 	 *
 	 * @var   PaymentMethodInterface[]
 	 */
-	public static $methods = array();
-
-	/**
-	 * Iterator position.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @var   int
-	 */
-	private $position = 0;
+	private static $methods = array();
 
 	/**
 	 * Register a saved payment method.
@@ -50,62 +41,29 @@ class SavedPaymentMethods implements Iterator {
 	 * @param  PaymentMethodInterface $method Saved payment method object.
 	 * @return void
 	 */
-	public function register( $method ) {
+	public static function register( $method ) {
 		self::$methods[] = $method;
 	}
 
 	/**
-	 * Rewind position to the start.
+	 * Return the payment methods.
 	 *
 	 * @since  1.0.0
 	 *
-	 * @return void
+	 * @return PaymentMethodInterface[]
 	 */
-    public function rewind() {
-		$this->position = 0;
-    }
-
-	/**
-	 * Get the current payment method.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return PaymentMethodInterface
-	 */
-    public function current() {
-        return self::$methods[ $this->position ];
-    }
-
-	/**
-	 * Get the current position.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return int
-	 */
-    public function key() {
-        return $this->position;
-    }
-
-	/**
-	 * Iterate to the next position.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return void
-	 */
-	public function next() {
-		++$this->position;
+	public static function get() {
+		return self::$methods;
 	}
 
 	/**
-	 * Check that the current position exists within the array.
+	 * Check if there are saved payment methods.
 	 *
 	 * @since  1.0.0
 	 *
-	 * @return void
+	 * @return boolean
 	 */
-	public function valid() {
-		return isset( self::$methods[ $this->position ] );
+	public static function has() {
+		return ! empty( self::$methods );
 	}
 }

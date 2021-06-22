@@ -10,7 +10,7 @@
  * @version   1.0.0
  */
 
-namespace Charitable\Gateways\PaymentMethods;
+namespace Charitable\Gateways\SavedPaymentMethods;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -33,6 +33,24 @@ interface PaymentMethodInterface {
 	public function get_gateway();
 
 	/**
+	 * Get the gateway's ID for the payment method.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @return mixed
+	 */
+	public function get_gateway_id();
+
+	/**
+	 * An ID we use internally to get a specific saved payment method.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_system_id();
+
+	/**
 	 * Get the type of payment method.
 	 *
 	 * @since  1.0.0
@@ -40,6 +58,15 @@ interface PaymentMethodInterface {
 	 * @return string
 	 */
 	public function get_type();
+
+	/**
+	 * Get a descriptive type.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_descriptive_type();
 
 	/**
 	 * Get an icon for the payment method.

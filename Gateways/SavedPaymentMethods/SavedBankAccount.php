@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-abstract class SavedBankAccount implements PaymentMethodInterface, SavedBankAccountInterface {
+abstract class SavedBankAccount extends SavedPaymentMethod implements PaymentMethodInterface, SavedBankAccountInterface {
 
 	/**
 	 * Get the payment method type.
@@ -33,6 +33,17 @@ abstract class SavedBankAccount implements PaymentMethodInterface, SavedBankAcco
 	 */
 	public function get_type() {
 		return 'bank_account';
+	}
+
+	/**
+	 * Get a descriptive type.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_descriptive_type() {
+		return __( 'bank account', 'charitable' );
 	}
 
 	/**

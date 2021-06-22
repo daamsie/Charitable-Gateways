@@ -33,7 +33,15 @@ require_once 'Gateways/Payment/ProcessorInterface.php';
 require_once 'Gateways/Payment/RequestInterface.php';
 require_once 'Gateways/Payment/ResponseInterface.php';
 require_once 'Gateways/Payment/Processors.php';
+require_once 'Gateways/SavedPaymentMethods/PaymentMethodInterface.php';
+require_once 'Gateways/SavedPaymentMethods/SavedBankAccountInterface.php';
+require_once 'Gateways/SavedPaymentMethods/SavedCardInterface.php';
+require_once 'Gateways/SavedPaymentMethods/SavedPaymentMethod.php';
+require_once 'Gateways/SavedPaymentMethods/SavedCard.php';
+require_once 'Gateways/SavedPaymentMethods/SavedPaymentMethods.php';
+require_once 'Gateways/SavedPaymentMethods/SavedBankAccount.php';
 require_once 'Helpers/DonationDataMapper.php';
+require_once 'Template.php';
 
 if ( ! function_exists( '\Charitable\Packages\Gateways\process_donation' ) ) :
 	/**
@@ -142,3 +150,11 @@ if ( ! function_exists( '\Charitable\Packages\Gateways\set_gateway_subscription_
 		return update_post_meta( $donation->ID, $key, $url );
 	}
 endif;
+
+add_filter(
+	'charitable_public_form_view_custom_field_templates',
+	function( $templates ) {
+		$templates['gateway-fields']['class'] = '\Charitable\Template';
+		return $templates;
+	}
+);
