@@ -216,6 +216,17 @@ class DonationDataMapper {
 	}
 
 	/**
+	 * Get the session ID.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_session_id() {
+		return charitable_get_session()->get_session_id();
+	}
+
+	/**
 	 * Add the map to be used for the mapped data.
 	 *
 	 * @since  1.0.0

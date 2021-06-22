@@ -1,13 +1,13 @@
 <?php
 /**
- * description
+ * Class responsible for registering and retrieving payment processors.
  *
- * @package   package/Classes/class
+ * @package   Charitable/Classes/\Charitable\Gateways\Payment\Processors
  * @author    Eric Daams
  * @copyright Copyright (c) 2021, Studio 164a
  * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since     version
- * @version   version
+ * @since     1.0.0
+ * @version   1.0.0
  */
 
 namespace Charitable\Gateways\Payment;
@@ -20,9 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * class
+ * \Charitable\Gateways\Payment\Processors
  *
- * @since version
+ * @since 1.0.0
  */
 class Processors {
 

@@ -67,7 +67,7 @@ if ( ! function_exists( '\Charitable\Packages\Gateways\process_donation' ) ) :
 			}
 
 			foreach ( $response->get_meta() as $key => $value ) {
-				update_post_meta( $this->donation_id, $key, $value );
+				update_post_meta( $donation_id, $key, $value );
 			}
 
 			if ( $response->payment_requires_redirect() ) {
@@ -117,6 +117,27 @@ if ( ! function_exists( '\Charitable\Packages\Gateways\set_gateway_transaction_u
 		}
 
 		$key = '_gateway_transaction_url';
+		$url = charitable_sanitize_donation_meta( $url, $key );
+		// comment
+		return update_post_meta( $donation->ID, $key, $url );
+	}
+endif;
+
+if ( ! function_exists( '\Charitable\Packages\Gateways\set_gateway_subscription_url' ) ) :
+	/**
+	 * Save the gateway's subscription URL.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @param  string|false $url The URL of the subscription in the gateway account.
+	 * @return boolean
+	 */
+	function set_gateway_subscription_url( $url, $donation ) {
+		if ( ! $url ) {
+			return false;
+		}
+
+		$key = '_gateway_subscription_url';
 		$url = charitable_sanitize_donation_meta( $url, $key );
 		return update_post_meta( $donation->ID, $key, $url );
 	}
