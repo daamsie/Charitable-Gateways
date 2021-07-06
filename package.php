@@ -40,6 +40,7 @@ require_once 'Gateways/SavedPaymentMethods/SavedPaymentMethod.php';
 require_once 'Gateways/SavedPaymentMethods/SavedCard.php';
 require_once 'Gateways/SavedPaymentMethods/SavedPaymentMethods.php';
 require_once 'Gateways/SavedPaymentMethods/SavedBankAccount.php';
+require_once 'Gateways/PaymentMethods/PaymentMethod.php';
 require_once 'Helpers/DonationDataMapper.php';
 require_once 'Template.php';
 
