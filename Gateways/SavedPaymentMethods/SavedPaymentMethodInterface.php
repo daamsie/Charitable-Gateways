@@ -2,7 +2,7 @@
 /**
  * Interface to be implemented by gateways.
  *
- * @package   Charitable/Classes/ProcessorInterface
+ * @package    \Charitable\Gateways\SavedPaymentMethods\SavedPaymentMethodInterface
  * @author    Eric Daams
  * @copyright Copyright (c) 2021, Studio 164a
  * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-interface PaymentMethodInterface {
+interface SavedPaymentMethodInterface {
 	/**
 	 * Get the payment method's gateway.
 	 *

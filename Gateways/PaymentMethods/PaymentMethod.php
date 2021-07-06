@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @abstract
  * @since   x.x.x
  */
-class PaymentMethod {
+class PaymentMethod implements PaymentMethodInterface {
 
 	/**
 	 * @var     string The payment method's gateway

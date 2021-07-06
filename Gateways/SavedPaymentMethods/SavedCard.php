@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-abstract class SavedCard extends SavedPaymentMethod implements PaymentMethodInterface, SavedCardInterface {
+abstract class SavedCard extends SavedPaymentMethod implements SavedPaymentMethodInterface, SavedCardInterface {
 
 	/**
 	 * Get the payment method type.

@@ -1,8 +1,8 @@
 <?php
 /**
- * Class responsible for registering and retrieving payment methods.
+ * Class responsible for registering and retrieving payment methods that are available on a gateway.
  *
- * @package   Charitable/Classes/\Charitable\Gateways\Payment\Processors
+ * @package   Charitable/Classes/\Charitable\Gateways\PaymentMethods\PaymentMethods
  * @author    Eric Daams
  * @copyright Copyright (c) 2021, Studio 164a
  * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -10,7 +10,7 @@
  * @version   1.0.0
  */
 
-namespace Charitable\Gateways\SavedPaymentMethods;
+namespace Charitable\Gateways\PaymentMethods;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,27 +18,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * \Charitable\Gateways\SavedPaymentMethods\SavedPaymentMethods
+ * \Charitable\Gateways\PaymentMethods\PaymentMethods
  *
  * @since 1.0.0
  */
-class SavedPaymentMethods {
+class PaymentMethods {
 
 	/**
-	 * Saved payment methods.
+	 * Payment methods.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var   SavedPaymentMethodInterface[]
+	 * @var   PaymentMethodInterface[]
 	 */
 	private static $methods = array();
 
 	/**
-	 * Register a saved payment method.
+	 * Register a payment method.
 	 *
 	 * @since  1.0.0
 	 *
-	 * @param  SavedPaymentMethodInterface $method Saved payment method object.
+	 * @param  PaymentMethodInterface $method Payment method object.
 	 * @return void
 	 */
 	public static function register( $method ) {
@@ -50,14 +50,14 @@ class SavedPaymentMethods {
 	 *
 	 * @since  1.0.0
 	 *
-	 * @return SavedPaymentMethodInterface[]
+	 * @return PaymentMethodInterface[]
 	 */
 	public static function get() {
 		return self::$methods;
 	}
 
 	/**
-	 * Check if there are saved payment methods.
+	 * Check if there are payment methods.
 	 *
 	 * @since  1.0.0
 	 *

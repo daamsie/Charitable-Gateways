@@ -33,14 +33,16 @@ require_once 'Gateways/Payment/ProcessorInterface.php';
 require_once 'Gateways/Payment/RequestInterface.php';
 require_once 'Gateways/Payment/ResponseInterface.php';
 require_once 'Gateways/Payment/Processors.php';
-require_once 'Gateways/SavedPaymentMethods/PaymentMethodInterface.php';
+require_once 'Gateways/SavedPaymentMethods/SavedPaymentMethodInterface.php';
 require_once 'Gateways/SavedPaymentMethods/SavedBankAccountInterface.php';
 require_once 'Gateways/SavedPaymentMethods/SavedCardInterface.php';
 require_once 'Gateways/SavedPaymentMethods/SavedPaymentMethod.php';
 require_once 'Gateways/SavedPaymentMethods/SavedCard.php';
 require_once 'Gateways/SavedPaymentMethods/SavedPaymentMethods.php';
 require_once 'Gateways/SavedPaymentMethods/SavedBankAccount.php';
+require_once 'Gateways/PaymentMethods/PaymentMethodInterface.php';
 require_once 'Gateways/PaymentMethods/PaymentMethod.php';
+require_once 'Gateways/PaymentMethods/PaymentMethods.php';
 require_once 'Helpers/DonationDataMapper.php';
 require_once 'Template.php';
 
