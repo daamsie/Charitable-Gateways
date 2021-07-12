@@ -14,11 +14,6 @@ namespace Charitable\Packages\Gateways;
 
 use Charitable\Gateways\Payment\Processors as PaymentProcessors;
 
-/* We are on Charitable 1.7 or above. */
-if ( version_compare( charitable()->get_version(), '1.7', '>=' ) ) {
-	return;
-}
-
 /* The package has already been loaded. */
 if ( defined( 'CHARITABLE_GATEWAYS_PACKAGE_LOADED' ) && CHARITABLE_GATEWAYS_PACKAGE_LOADED ) {
 	return;
