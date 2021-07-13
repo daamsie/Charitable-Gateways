@@ -111,50 +111,12 @@ interface PaymentMethodInterface {
 	public function are_fields_required();
 
 	/**
-	 * Does this payment method support recurring payments?
+	 * What does this payment method support
 	 *
 	 * @since  1.0.0
 	 *
 	 * @return boolean
 	 */
-	public function supports_recurring();
-
-
-	/**
-	 * Does this payment method support refunds?
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return boolean
-	 */
-	public function supports_refunds();
-
-
-	/**
-	 * Does this payment method recurring cancellations?
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return boolean
-	 */
-	public function supports_recurring_cancellation();
-
-	/**
-	 * Does this payment method support 1.3.0?
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return boolean
-	 */
-	public function supports_1_3_0();
-
-	/**
-	 * Are credit cards supported?
-	 *
-	 * @since   1.0.0
-	 *
-	 * @return  boolean
-	 */
-	public function supports_credit_cards();
+	public function supports();
 
 }

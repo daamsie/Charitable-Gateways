@@ -61,13 +61,7 @@ class PaymentMethod implements PaymentMethodInterface {
 	 * @var     array Array of options that this payment method supports.
 	 * @since   x.x.x
 	 */
-	protected $supports = array(
-		'recurring'              => false,
-		'refunds'                => false,
-		'recurring_cancellation' => false,
-		'1.3.0'                  => false,
-		'credit-card'            => false,
-	);
+	protected $supports = array();
 
 	/**
 	 * An array of supported currencies. An empty array will support all currencies
@@ -197,61 +191,15 @@ class PaymentMethod implements PaymentMethodInterface {
 	}
 
 	/**
-	 * Is recurring supported?
+	 * Check if a the payment method  supports a given feature.
 	 *
-	 * @since   x.x.x
+	 * @since   1.7.0
 	 *
-	 * @return  boolean
+	 * @param   string $feature string The name of a feature to test support for.
+	 * @return  bool True if the payment method supports the feature, false otherwise.
 	 */
-	public function supports_recurring() {
-		return $this->supports['recurring'];
+	public function supports( $feature ) {
+		return in_array( $feature, $this->supports, true ) ? true : false;
 	}
-
-	/**
-	 * Are refunds supported?
-	 *
-	 * @since   x.x.x
-	 *
-	 * @return  boolean
-	 */
-	public function supports_refunds() {
-		return $this->supports['refunds'];
-	}
-
-	/**
-	 * Are recurring cancellations supported?
-	 *
-	 * @since   x.x.x
-	 *
-	 * @return  boolean
-	 */
-	public function supports_recurring_cancellation() {
-		return $this->supports['recurring_cancellation'];
-	}
-
-	/**
-	 * Is 1.3.0 supported?
-	 *
-	 * NOTE: do we still need this?
-	 *
-	 * @since   x.x.x
-	 *
-	 * @return  boolean
-	 */
-	public function supports_1_3_0() {
-		return $this->supports['1.3.0'];
-	}
-
-	/**
-	 * Are credit cards supported?
-	 *
-	 * @since   x.x.x
-	 *
-	 * @return  boolean
-	 */
-	public function supports_credit_cards() {
-		return $this->supports['credit-card'];
-	}
-
 
 }

@@ -88,7 +88,7 @@ if ( ! $requires_fields && 2 > count( $payment_methods ) ) {
 		<ul id="charitable-gateway-selector" class="charitable-radio-list charitable-form-field">
 			<?php foreach ( $payment_methods as $payment_method ) : ?>
 				<li class="charitable-gateway-tab"><input type="radio"
-						data-supports-recurring="<?php echo esc_attr( $payment_method->supports_recurring() ); ?>"
+						data-supports-recurring="<?php echo esc_attr( $payment_method->supports( 'recurring' ) ); ?>"
 						id="gateway-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-<?php echo esc_attr( $payment_method->get_key() ); ?>"
 						name="gateway-payment-method"
 						class="charitable-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-payment-method"
