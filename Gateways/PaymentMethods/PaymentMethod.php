@@ -81,8 +81,8 @@ class PaymentMethod implements PaymentMethodInterface {
 		$this->key             = $key;
 		$this->label           = $label;
 		$this->icon            = $icon;
-		$this->currencies      = $opts['currencies'] ?: array();
-		$this->fields_required = $opts['fields_required'] ?: false;
+		$this->currencies      = array_key_exists( 'currencies', $opts ) ? $opts['currencies'] : array();
+		$this->fields_required = array_key_exists( 'fields_required', $opts ) ? $opts['fields_required'] : false;
 
 		if ( array_key_exists( 'supports', $opts ) ) {
 			$this->supports = array_replace( $this->supports, $opts['supports'] );
@@ -200,6 +200,22 @@ class PaymentMethod implements PaymentMethodInterface {
 	 */
 	public function supports( $feature ) {
 		return in_array( $feature, $this->supports, true ) ? true : false;
+	}
+
+	/**
+	 * Check if a the payment method supports a given currency
+	 *
+	 * @since   1.7.0
+	 *
+	 * @param   string $currency The currency to check support for.
+	 * @return  bool True if the payment method supports the currency, false otherwise.
+	 */
+	public function supports_currency( $currency ) {
+		if ( 0 === count( $this->currencies ) ) {
+			// An empty array of currencies indicates all currencies are allowed.
+			return true;
+		}
+		return in_array( $currency, $this->currencies, true );
 	}
 
 }
