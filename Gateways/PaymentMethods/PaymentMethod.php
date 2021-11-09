@@ -88,6 +88,12 @@ class PaymentMethod implements PaymentMethodInterface {
 			$this->supports = array_replace( $this->supports, $opts['supports'] );
 		}
 
+		if ( array_key_exists( 'enabled', $opts ) && is_bool( $opts['enabled'] ) ) {
+			$this->enabled = $opts['enabled'];
+		} else {
+			$this->enabled = false;
+		}
+
 	}
 
 	/**
