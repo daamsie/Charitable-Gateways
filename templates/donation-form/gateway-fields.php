@@ -100,7 +100,7 @@ if ( ! $requires_fields && 2 > count( $payment_methods ) ) {
 						value="<?php echo esc_attr( $payment_method->get_gateway() ); ?>-<?php echo esc_attr( $payment_method->get_key() ); ?>"
 						aria-describedby="charitable-gateway-selector-header"
 						<?php checked( $default, $payment_method->get_key() ); ?> />
-					<label for="gateway-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-<?php echo esc_attr( $payment_method->get_key() ); ?>">
+					<label tabindex="0" for="gateway-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-<?php echo esc_attr( $payment_method->get_key() ); ?>">
 						<?php echo $payment_method->get_icon(); ?>
 						<?php echo $payment_method->get_label(); ?>
 					</label>
