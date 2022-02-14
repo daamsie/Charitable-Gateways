@@ -202,4 +202,17 @@ class PaymentMethod implements PaymentMethodInterface {
 		return in_array( $feature, $this->supports, true ) ? true : false;
 	}
 
+
+	/**
+	 * Check if a the payment method supports a given currency.
+	 *
+	 * @since   1.7.0
+	 *
+	 * @param   string $currency string The currency code.
+	 * @return  bool True if the payment method supports the currency, false otherwise.
+	 */
+	public function supports_currency( $currency ) {
+		return 0 === count( $this->currencies ) || in_array( $currency, $this->currencies, true ) ? true : false;
+	}
+
 }
