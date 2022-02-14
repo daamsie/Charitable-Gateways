@@ -146,6 +146,10 @@ class DonationDataMapper {
 			return \Charitable_Currency::get_instance()->cast_to_decimal_format( $this->donation->get( 'total_donation_with_fees' ) );
 		}
 
+		if ( $this->donation->get( 'add_tip' ) ) {
+			return \Charitable_Currency::get_instance()->cast_to_decimal_format( $this->donation->get( 'total_donation_with_tip' ) );
+		}
+
 		return $this->donation->get_total_donation_amount( true );
 	}
 
