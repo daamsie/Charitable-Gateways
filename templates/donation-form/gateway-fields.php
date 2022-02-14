@@ -85,17 +85,22 @@ if ( ! $requires_fields && 2 > count( $payment_methods ) ) {
 		endif;
 		?>
 
+		<!-- 
+				The id="charitable-gateway-selector" naming is due to legacy behaviour. 
+				This now allows selecting payment methods. There can be multiple payment methods per gateway.
+			-->
 		<ul id="charitable-gateway-selector" class="charitable-radio-list charitable-form-field">
 			<?php foreach ( $payment_methods as $payment_method ) : ?>
 				<li class="charitable-gateway-tab"><input type="radio"
 						data-supports-recurring="<?php echo esc_attr( $payment_method->supports( 'recurring' ) ); ?>"
+						data-gateway="<?php echo esc_attr( $payment_method->get_gateway() ); ?>"
 						id="gateway-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-<?php echo esc_attr( $payment_method->get_key() ); ?>"
 						name="gateway-payment-method"
-						class="charitable-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-payment-method"
+						class="charitable-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-payment-method charitable-payment-method charitable-available-payment-method"
 						value="<?php echo esc_attr( $payment_method->get_gateway() ); ?>-<?php echo esc_attr( $payment_method->get_key() ); ?>"
 						aria-describedby="charitable-gateway-selector-header"
 						<?php checked( $default, $payment_method->get_key() ); ?> />
-					<label for="gateway-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-<?php echo esc_attr( $payment_method->get_key() ); ?>">
+					<label tabindex="0" for="gateway-<?php echo esc_attr( $payment_method->get_gateway() ); ?>-<?php echo esc_attr( $payment_method->get_key() ); ?>">
 						<?php echo $payment_method->get_icon(); ?>
 						<?php echo $payment_method->get_label(); ?>
 					</label>

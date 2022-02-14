@@ -115,8 +115,9 @@ interface PaymentMethodInterface {
 	 *
 	 * @since  1.0.0
 	 *
+	 * @param   string $feature string The name of a feature to test support for.
 	 * @return boolean
 	 */
-	public function supports();
+	public function supports( $feature );
 
 }
