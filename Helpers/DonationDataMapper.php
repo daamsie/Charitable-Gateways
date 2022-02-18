@@ -146,7 +146,7 @@ class DonationDataMapper {
 			return \Charitable_Currency::get_instance()->cast_to_decimal_format( $this->donation->get( 'total_donation_with_fees' ) );
 		}
 
-		if ( $this->donation->get( 'add_tip' ) ) {
+		if ( ! empty( $this->donation->get( 'tip_percentage' ) ) ) {
 			return \Charitable_Currency::get_instance()->cast_to_decimal_format( $this->donation->get( 'total_donation_with_tip' ) );
 		}
 
